@@ -1,0 +1,109 @@
+/* Room.css */
+
+.container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+    margin: 0 auto;
+    background: linear-gradient(#1ea6d7,#fdfdfd,#1ea6d7);
+  }
+  
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px;
+    background-color: #f1f1f1;
+    text-transform: capitalize;
+  }
+  .e-btn{
+    margin-left: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(254, 164, 164);
+    cursor: pointer;
+  }
+  .e-btn:hover{
+    scale: .98;
+    transition: .3;
+  }
+  span{
+    font-size: 15px;
+    color:#007bff;
+  }
+  
+  .section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    overflow-y: auto; /* Scrollable section for messages */
+    margin-bottom: 80px; /* To prevent content from being hidden behind the fixed footer */
+  }
+  
+  .messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 4px;
+    max-width: 60%;
+  }
+  
+  .you-msg {
+    align-self: flex-start;
+    background-color: #d1e7dd;
+    text-align: left;
+  }
+  
+  .other-msg {
+    align-self: flex-end;
+    background-color: #f8d7da;
+    text-align: right;
+  }
+  
+  .send-msg {
+    position: fixed; /* Fixed position to stay at the bottom */
+    bottom: 0; /* Stick to the bottom of the viewport */
+    left: 0 ;
+    width: 100%; /* Full width of the viewport */
+    background-color: #f1f1f1;
+    padding: 16px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+ form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+ }
+  .msg {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .send {
+    margin-left: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  

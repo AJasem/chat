@@ -1,13 +1,22 @@
+import React from 'react';
+import { RoomProvider } from './RoomContext'; // Adjust the path as needed
+import Home from './Home'; 
+import Room from './Room'; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 
 function App() {
-
-
   return (
-    <>
-      <h1>Hello world</h1>
-    </>
-  )
+    <Router>
+      <RoomProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/room/:roomName/:userName" element={<Room />} />
+          {/* Add other routes as needed */}
+        </Routes>
+      </RoomProvider>
+    </Router>
+  );
 }
 
-export default App
+export default App;

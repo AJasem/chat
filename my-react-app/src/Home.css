@@ -1,0 +1,27 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#cddef1,#fd7968,#cddef1) ;
+    height: 300px;
+    margin: auto;
+    border-radius: 5px;
+}
+.form-element{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+
+}
+.btn{
+    padding: 10px;
+    margin: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.form-element:focus {
+    outline: 2px #fd7968 solid;
+}
