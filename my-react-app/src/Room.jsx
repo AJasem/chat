@@ -89,7 +89,7 @@ function Room() {
             >
               <span>{message.sender}</span>
               <br />
-              {message.text}
+              <p>{message.text}</p>
             </div>
           ))}
         </div>

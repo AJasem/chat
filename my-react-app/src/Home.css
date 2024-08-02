@@ -1,4 +1,16 @@
+.home{
+width: 100%;
+margin: 0 auto;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+overflow-x: hidden;
+}
+
 .form{
+    width: 90% !important;
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -6,11 +18,12 @@
     align-items: center;
     background: linear-gradient(#cddef1,#fd7968,#cddef1) ;
     height: 300px;
-    margin: auto;
+    margin: 20px auto;
     border-radius: 5px;
 }
 .form-element{
     padding: 10px;
+    width: 80%;
     margin: 10px;
     border-radius: 5px;
     border: none;
@@ -21,7 +34,10 @@
     margin: 10px;
     margin-top: 20px;
     border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
 }
 .form-element:focus {
-    outline: 2px #fd7968 solid;
+    outline: 2px #000000 solid;
 }

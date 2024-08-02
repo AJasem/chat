@@ -31,7 +31,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className='home'>
       <h1>Welcome To The Chat Room</h1>
        <h4>Pick a room name and send it to your friend!</h4>
       <form onSubmit={handleSubmit} className='form'>
