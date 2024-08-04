@@ -1,5 +1,4 @@
-import React from 'react';
-import { RoomProvider } from './RoomContext'; // Adjust the path as needed
+import { RoomProvider } from './RoomContext'; 
 import Home from './Home'; 
 import Room from './Room'; 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -12,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/room/:roomName/:userName" element={<Room />} />
-          {/* Add other routes as needed */}
+
         </Routes>
       </RoomProvider>
     </Router>

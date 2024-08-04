@@ -36,12 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-     "daphne",
+    #  "daphne",
     'django.contrib.staticfiles',
     'chat',
     'rest_framework',
     'corsheaders',
-    'channels',
+    # 'channels',
    
 ]
 
@@ -76,20 +76,18 @@ TEMPLATES = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 WSGI_APPLICATION = 'chatapp.wsgi.application'
-ASGI_APPLICATION = "chatapp.asgi.application"
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
-    },
-}
+# ASGI_APPLICATION = "chatapp.asgi.application"
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels.layers.InMemoryChannelLayer",
+#     },
+# }
 
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'chatapp',       
-        'USER': 'postgres',       
-        'PASSWORD': '122133',  
+        'NAME': 'chatapp',        
         'HOST': 'localhost',                         
     }
 }

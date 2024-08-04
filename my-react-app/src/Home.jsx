@@ -1,4 +1,4 @@
-import { useRoomContext } from './RoomContext'; // Adjust the path as needed
+import { useRoomContext } from './RoomContext'; 
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import axios from 'axios'
@@ -15,12 +15,12 @@ function Home() {
       userName: userName,
     };
 
-    axios.post('http://localhost:8000/api/checkroom', formData)
+    axios.post('https://chatapi.ahmads.dev/api/checkroom', formData)
       .then(response => {
-        const messages = response.data.messages || []; // Ensure messages is an array
+        const messages = response.data.messages || []; 
         localStorage.setItem('roomName', roomName);
         localStorage.setItem('userName', userName);
-        // Update the messages state correctly
+       
         setMessages(messages.map(msg => ({ text: msg.value, sender: msg.user })));
 
         navigate(`/room/${roomName}/${userName}`);

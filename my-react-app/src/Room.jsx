@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Room.css';
 import { useRoomContext } from './RoomContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import io from 'socket.io-client';
 
 function Room() {
   const navigate = useNavigate();
@@ -11,49 +12,52 @@ function Room() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const ws = new WebSocket(`ws://localhost:8000/ws/chat/${roomName}/`);
-    setSocket(ws);
 
-    ws.onopen = () => {
-        console.log('Connected to WebSocket server');
-    };
+    const socket = io('https://socketio.ahmads.dev');  
+    setSocket(socket);
 
-    ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        setMessages(prevMessages => [
-            ...prevMessages,
-            { text: data.message, sender: data.user }
-        ]);
-    };
+    socket.on('connect', () => {
+      console.log('Connected to Socket.IO server');
+     
+      socket.emit('join', { room: roomName, user: userName });
+    });
 
-    ws.onclose = () => {
-        console.log('Disconnected from WebSocket server');
-    };
+    socket.on('message', (data) => {
+      setMessages(prevMessages => [
+        ...prevMessages,
+        { text: data.message, sender: data.user, date: data.date }
+      ]);
+    });
 
-    return () => ws.close();
-}, [roomName]);
+    socket.on('disconnect', () => {
+      console.log('Disconnected from Socket.IO server');
+    });
+
+    return () => socket.disconnect();
+  }, [roomName, userName]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (socket) {
-      socket.send(JSON.stringify({
+      socket.emit('message', {
         message: newMessage,
-        user: userName
-      }));
+        user: userName,
+        room: roomName
+      });
       setNewMessage('');
     }
   };
 
-  const handleRefresh = () => {
+  const handleRefresh = (e1,e2) => {
     const formData = {
-      roomName: roomName,
-      userName: userName,
+      roomName: e1,
+      userName: e2,
     };
 
-    axios.post('http://localhost:8000/api/checkroom', formData)
+    axios.post('https://chatapi.ahmads.dev/api/checkroom', formData)
       .then(response => {
         const messages = response.data.messages || [];
-        setMessages(messages.map(msg => ({ text: msg.value, sender: msg.user })));
+        setMessages(messages.map(msg => ({ text: msg.value, sender: msg.user, date: msg.date})));
       })
       .catch(error => {
         console.log('Error starting room:', error);
@@ -66,7 +70,7 @@ function Room() {
 
     if (storedRoomName) setRoomName(storedRoomName);
     if (storedUserName) setUserName(storedUserName);
-    handleRefresh();
+    handleRefresh(storedRoomName,storedUserName);
   }, [roomName]);
 
   const handleExit = () => {
@@ -90,6 +94,7 @@ function Room() {
               <span>{message.sender}</span>
               <br />
               <p>{message.text}</p>
+             
             </div>
           ))}
         </div>
