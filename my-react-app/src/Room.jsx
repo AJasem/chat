@@ -1,9 +1,11 @@
-import  { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './Room.css';
 import { useRoomContext } from './RoomContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 function Room() {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ function Room() {
   const [newMessage, setNewMessage] = useState('');
   const [socket, setSocket] = useState(null);
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null); 
 
   useEffect(() => {
     const socket = io('https://socketio.ahmads.dev');  
@@ -50,6 +53,7 @@ function Room() {
         room: roomName
       });
       setNewMessage('');
+      inputRef.current.focus(); 
     }
   };
 
@@ -83,8 +87,10 @@ function Room() {
   return (
     <div className="container">
       <div className="header">
-        {roomName}
-        <button onClick={handleExit} className='e-btn'>Exit Room</button>
+        <div>{roomName}</div>
+        <button onClick={handleExit} className='e-btn'>
+          <FontAwesomeIcon icon={faRightFromBracket} />
+        </button>
       </div>
       <div className="section">
         <div className="messages">
@@ -109,6 +115,7 @@ function Room() {
               className='msg'
               required
               placeholder='Write a message'
+              ref={inputRef} 
             />
             <button type='submit' className='send'>Send</button>
           </form>

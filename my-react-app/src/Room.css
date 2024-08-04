@@ -22,14 +22,18 @@
     padding: 16px;
     background-color: #ffffff;
     text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .e-btn{
     margin-left: 20px;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(254, 164, 164);
+    background-color:#dfe9f3;
     cursor: pointer;
+    font-size: large;
   }
   .e-btn:hover{
     scale: .98;
@@ -159,7 +163,7 @@
     
     .send {
       flex-basis: 25%;
-      padding: 9px 16px;
+      padding: 10px 16px;
       border: none;
       border-radius: 4px;
       background-color: #dfe9f3;
