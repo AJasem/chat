@@ -1,7 +1,7 @@
 *** 
 # Simple Chat Application
 
-Welcome to the Simple Chat Application! This application leverages React for the user interface, Django for the backend, and Node.js with Socket.IO for real-time communication. You can see it live at [chat.ahmads.dev](https://chat.ahmads.dev).
+Simple Chat Application! This application leverages React for the user interface, Django for the backend, and Node.js with Socket.IO for real-time communication. You can see it live at [chat](https://chat.ahmads.dev).
 
 ## Project Structure
 
@@ -26,3 +26,4 @@ git clone https://github.com/AJasem/chat.git
 ```
 - Change the domain names to point to your localhost if you want to add other logic or more features. <br>
 - Add your own database username and password in Django setting.
+- And don't forget npm install and pip install (: .
